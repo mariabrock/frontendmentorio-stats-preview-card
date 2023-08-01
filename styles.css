@@ -5,6 +5,7 @@ html, body {
   font-size: 15px;
   font-family: 'Inter', sans-serif;
   background-color: hsl(233, 47%, 7%);
+  color: hsl(0, 0%, 100%);
 }
 
 .container {
@@ -22,19 +23,27 @@ html, body {
   border-radius: 10px;
 }
 
-.image-wrapper {
-  height: 200px;
+.overlay {
+  width: 100%;
+  height: 100%;
   background-color: hsl(277, 64%, 61%);
-  background-image: url(./assets/image-header-mobile.jpg);
-  background-size: contain;
+  opacity: 0.5;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.image {
+  height: 250px;
+  background-image: url('./assets/image-header-mobile.jpg');
   background-position: center;
-  background-blend-mode: multiply;
+  background-size: cover;
+  background-repeat: no-repeat;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
 .copy {
-  margin: 2rem;
+  margin: 1rem;
   
   .header {
     color: hsl(0, 0%, 100%);
@@ -51,6 +60,11 @@ html, body {
   .stats-head {
     color: hsl(0, 0%, 100%);
   }
+}
+
+.sub-copy {
+  margin-top: .5rem;
+  margin-bottom: 1rem;
 }
 
 p {
