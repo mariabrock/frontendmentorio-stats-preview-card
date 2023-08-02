@@ -10,28 +10,26 @@ html, body {
 
 .container {
   display: flex;
-  flex-direction: row;
-  margin: 3rem;
-  /* padding: 3rem; */
+  justify-content: center;
+  padding: 3rem;
 }
 
 .card {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
+  max-width: 1000px;
+  display: grid;
+  grid-template-areas:
+   "copy copy image image"
+   "stats stats image image";
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   background-color: hsl(244, 38%, 16%);
   color: hsl(0, 0%, 100%);
   border-radius: 10px;
 }
 
-.container-2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .overlay {
-  float: right;
+  grid-area: image;
+  align-self: stretch;
   width: 100%;
   height: 100%;
   background-color: hsl(277, 64%, 61%);
@@ -41,10 +39,10 @@ html, body {
 }
 
 .image {
-  float: right;
-  width: 540px;
-  height: 446px;
-  background-image: url('./assets/image-header-desktop.jpg');
+  grid-area: image;
+  align-self: stretch;
+  height: 450px;
+  background-image: url('./assets/image-header-mobile.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -53,50 +51,76 @@ html, body {
 }
 
 .copy {
+  grid-area: copy;
+  justify-self: start;
   margin: 1rem;
-  
-  .header {
-    color: hsl(0, 0%, 100%);
-  }
-
-  .accent {
-    color: hsl(277, 64%, 61%);
-  }
-
-  .paragraph, .stats {
-    color: hsla(0, 0%, 100%, 0.75);
-  }
-  
-  .stats-head {
-    color: hsl(0, 0%, 100%);
-  }
+  padding-left: 3rem;
+  padding-top: 1rem;
+  padding-right: 3rem;
 }
 
+.header {
+  color: hsl(0, 0%, 100%);
+}
+
+.accent {
+  color: hsl(277, 64%, 61%);
+}
+
+.paragraph, .stats {
+  color: hsla(0, 0%, 100%, 0.75);
+}
+
+.stats-head {
+  color: hsl(0, 0%, 100%);
+}
+
+
 .sub-copy {
+  grid-area: stats;
+  justify-self: start;
   display: flex;
-  flex-direction:  row;
+  flex-direction: row;
+  grid-column-start: 1;
   justify-content: space-evenly;
   margin-top: .5rem;
   margin-bottom: 1rem;
+  padding-left: 3rem;
+}
+
+.stats {
+  margin: 1rem;
 }
 
 p {
   font-family: 'Lexend Deca', sans-serif;
 }
 
-.attribution { font-size: 11px; text-align: center; }
-.attribution a { color: hsl(228, 45%, 44%); }
+.attribution { 
+  font-size: 11px; text-align: center; 
+}
+
+.attribution a {
+   color: hsl(228, 45%, 44%); 
+  }
 
 @media only screen and (max-width: 600px) {
   .card {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-areas:
+      "image image"
+      "image image"
+      "copy copy"
+      "stats stats";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     text-align: center;
     background-color: hsl(244, 38%, 16%);
     color: hsl(0, 0%, 100%);
     border-radius: 10px;
   }
   .overlay {
+    grid-area: image;
     width: 100%;
     height: 100%;
     background-color: hsl(277, 64%, 61%);
@@ -106,6 +130,7 @@ p {
   }
   
   .image {
+    grid-area: image;
     height: 250px;
     background-image: url('./assets/image-header-mobile.jpg');
     background-position: center;
@@ -113,6 +138,14 @@ p {
     background-repeat: no-repeat;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+  }
+
+  .copy {
+    grid-area: copy;
+  }
+
+  .sub-copy {
+    grid-area: stats;
   }
   
 }
